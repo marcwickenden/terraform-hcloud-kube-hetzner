@@ -58,9 +58,25 @@ variable "ssh_additional_public_keys" {
 }
 
 variable "authentication_config" {
-  description = "Strucutred authentication configuration. This can be used to define external authentication providers."
+  description = "Structured authentication configuration. This can be used to define external authentication providers."
   type        = string
   default     = ""
+}
+
+variable "ssh_bastion" {
+  description = "SSH bastion configuration."
+  type = object({
+    bastion_host        = string
+    bastion_port        = number
+    bastion_user        = string
+    bastion_private_key = string
+  })
+  default = {
+    bastion_host        = null
+    bastion_port        = null
+    bastion_user        = null
+    bastion_private_key = null
+  }
 }
 
 variable "hcloud_ssh_key_id" {

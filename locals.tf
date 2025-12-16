@@ -333,10 +333,10 @@ locals {
     bastion_user        = "nat-router"
     bastion_private_key = var.ssh_private_key
     } : {
-    bastion_host        = null
-    bastion_port        = null
-    bastion_user        = null
-    bastion_private_key = null
+    bastion_host        = var.ssh_bastion.bastion_host
+    bastion_port        = var.ssh_bastion.bastion_port
+    bastion_user        = var.ssh_bastion.bastion_user
+    bastion_private_key = var.ssh_bastion.bastion_private_key
   }
 
   # Create 256 /24 subnets from the base network CIDR.
