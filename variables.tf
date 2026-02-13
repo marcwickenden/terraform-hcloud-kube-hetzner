@@ -164,6 +164,12 @@ variable "nat_router_subnet_index" {
   }
 }
 
+variable "network_gateway_ipv4" {
+  type        = string
+  default     = null
+  description = "Override the IPv4 gateway for the private network. Defaults to the first host address of network_ipv4_cidr. Set this when network_ipv4_cidr is a subset of the actual Hetzner network (e.g. set to \"10.0.0.1\" when using a /12 slice of a /8 network)."
+}
+
 variable "control_plane_subnet_start_index" {
   type        = number
   default     = 0

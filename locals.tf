@@ -347,7 +347,7 @@ locals {
   cluster_dns_ipv4 = var.cluster_dns_ipv4 != null ? var.cluster_dns_ipv4 : cidrhost(var.service_ipv4_cidr, 10)
 
   # The gateway's IP address is always the first IP address of the subnet's IP range
-  network_gw_ipv4 = cidrhost(var.network_ipv4_cidr, 1)
+  network_gw_ipv4 = var.network_gateway_ipv4 != null ? var.network_gateway_ipv4 : cidrhost(var.network_ipv4_cidr, 1)
 
   # if we are in a single cluster config, we use the default klipper lb instead of Hetzner LB
   control_plane_count    = sum([for v in var.control_plane_nodepools : v.count])
