@@ -157,11 +157,11 @@ spec:
           name: cluster-autoscaler
           resources:
             limits:
-              cpu: 200m
-              memory: 300Mi
+              cpu: 50m
+              memory: 128Mi
             requests:
-              cpu: 200m
-              memory: 300Mi
+              cpu: 500m
+              memory: 512Mi
           ports:
             - containerPort: 8085
           command:
