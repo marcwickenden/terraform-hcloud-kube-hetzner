@@ -156,10 +156,10 @@ spec:
         - image: ${ca_image}:${ca_version}
           name: cluster-autoscaler
           resources:
-            limits:
+            requests:
               cpu: 50m
               memory: 128Mi
-            requests:
+            limits:
               cpu: 500m
               memory: 512Mi
           ports:
