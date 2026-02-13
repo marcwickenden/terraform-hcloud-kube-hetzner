@@ -164,6 +164,28 @@ variable "nat_router_subnet_index" {
   }
 }
 
+variable "control_plane_subnet_start_index" {
+  type        = number
+  default     = 0
+  description = "Starting subnet index for control plane nodepools (counts up). Adjust when running multiple clusters on the same network."
+
+  validation {
+    condition     = var.control_plane_subnet_start_index >= 0 && var.control_plane_subnet_start_index <= 255
+    error_message = "Must be between 0 and 255."
+  }
+}
+
+variable "agent_subnet_start_index" {
+  type        = number
+  default     = 3
+  description = "Starting subnet index for agent nodepools (counts up). Adjust when running multiple clusters on the same network."
+
+  validation {
+    condition     = var.agent_subnet_start_index >= 0 && var.agent_subnet_start_index <= 255
+    error_message = "Must be between 0 and 255."
+  }
+}
+
 
 variable "load_balancer_location" {
   description = "Default load balancer location."
