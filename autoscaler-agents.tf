@@ -11,7 +11,8 @@ locals {
 
   nodeConfigName = var.use_cluster_name_in_node_name ? "${var.cluster_name}-" : ""
   cluster_config = {
-    imagesForArch : local.imageList
+    imagesForArch         : local.imageList
+    defaultSubnetIPRange  : local.network_ipv4_subnets[var.agent_subnet_start_index]
     nodeConfigs : {
       for index, nodePool in var.autoscaler_nodepools :
       ("${local.nodeConfigName}${nodePool.name}") => {
